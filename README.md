@@ -2,7 +2,27 @@
 
 An applied public health informatics prototype for syndromic surveillance analytics, anomaly detection, forecasting, geospatial risk monitoring, synthetic HL7 simulation, and retrieval-augmented public health search.
 
-This project demonstrates how public aggregate or synthetic emergency department surveillance data can be transformed into analyst-facing operational intelligence. The dashboard is designed as a public health analytics modernization prototype, not as an official public health, clinical, or government decision system.
+This project demonstrates how public aggregate or synthetic emergency department surveillance data can be transformed into analyst-facing operational intelligence. The dashboard is designed as a public health analytics modernization prototype focused on public health data engineering, surveillance modernization, applied AI/ML analytics, and emergency preparedness technology.
+
+The system is not an official public health, clinical, or government decision system.
+
+## Public Health Engineering Focus
+
+This repository supports a broader technical focus on scalable public health analytics infrastructure for earlier detection, monitoring, and interpretation of emerging health signals. The work demonstrates applied capability across healthcare data engineering, syndromic surveillance, anomaly detection, forecasting, geospatial analytics, retrieval-augmented search, synthetic data simulation, and analyst-facing dashboard design.
+
+The project is framed around the following applied engineering objective:
+
+> To design and implement modern public health surveillance analytics systems that improve the ability to detect unusual emergency department visit patterns, monitor geographic risk, validate data quality, and support timely public health preparedness and response planning.
+
+## Public Health Impact and Implementation Evidence
+
+| Area | Project Evidence |
+|---|---|
+| Public health relevance | Addresses surveillance, emergency preparedness, outbreak monitoring, respiratory illness detection, data quality analytics, and faster review of potential health-threat signals. |
+| Broader infrastructure value | Aligns with public health data modernization priorities, syndromic surveillance concepts, cross-jurisdiction situational awareness, emergency preparedness, and scalable health intelligence infrastructure. |
+| Engineering capability | Demonstrates hands-on implementation across data ingestion, ETL, feature engineering, anomaly detection, forecasting, risk scoring, geospatial visualization, NLP/RAG design, synthetic HL7 simulation, documentation, and deployment. |
+| Practical Implementation | Provides a working Streamlit prototype with measurable outputs, model-generated alerts, data quality metrics, documentation, tests, and reproducible project structure. |
+| Future Scalability | Can be extended with real-time feeds, HL7/FHIR ingestion, API alerts, jurisdiction-level dashboards, ontology-aware RAG, privacy-preserving synthetic data, and governed cloud deployment. |
 
 ## Project Purpose
 
@@ -47,6 +67,8 @@ Monitored syndrome categories:
 ## Public Health Context
 
 Syndromic surveillance uses near real-time healthcare encounter data, such as emergency department visits and chief complaints, to identify unusual patterns before confirmed diagnoses are available. This capability supports early outbreak detection, respiratory illness monitoring, overdose surveillance concepts, environmental health monitoring, emergency preparedness, and cross-jurisdiction situational awareness.
+
+This context is important because the project is not limited to a narrow software demonstration. It addresses a broader public health infrastructure need: converting fragmented healthcare encounter data into timely, explainable, and actionable surveillance intelligence that can support preparedness and response.
 
 The project is conceptually aligned with public health surveillance modernization priorities reflected in:
 
@@ -97,6 +119,21 @@ Core architecture layers:
 | Geospatial analytics | Aggregates state-level risk and displays risk maps and rankings. |
 | RAG/NLP assistant | Retrieves relevant project and surveillance context for grounded natural-language answers. |
 | Dashboard layer | Presents filters, KPIs, charts, maps, alert tables, data quality metrics, and methodology sections. |
+
+## Technical Contributions
+
+This project demonstrates several technical contributions that support public health analytics modernization:
+
+- End-to-end surveillance ETL from raw public data into an analytic state/date/syndrome table.
+- Interpretable anomaly detection using rolling baselines, z-scores, Isolation Forest, percent change, and signal persistence.
+- Composite risk scoring that translates model outputs into analyst-review priority levels.
+- Short-term forecasting workflow with ARIMA, Prophet option, Exponential Smoothing fallback, and rolling-average fallback.
+- Geospatial risk mapping for state-level situational awareness.
+- RAG-based public health search assistant grounded in local documentation and live surveillance summaries.
+- Synthetic HL7-style message generation for healthcare interoperability testing concepts.
+- Rule-based chief complaint classification as a transparent NLP baseline.
+- Data quality reporting for completeness, missingness, duplicates, timeliness, and geographic validity.
+- Technical documentation package including a white paper, model summary, data dictionary, use cases, and public-facing article.
 
 ## Models and Analytics
 
@@ -212,6 +249,7 @@ reports/data_dictionary.md     Data fields and processing definitions
 reports/model_summary.md       Model and analytics documentation
 reports/public_health_use_cases.md
 docs/Public_Health_Signal_Detection_Technical_White_Paper.docx
+docs/Public_Health_Signal_Detection_Technical_White_Paper.pdf
 docs/modernizing_public_health_surveillance_with_ai_medium_article.txt
 docs/whitepaper_assets/        Charts generated for documentation
 tests/                         Unit tests
@@ -222,7 +260,10 @@ tests/                         Unit tests
 Key documentation files:
 
 - `docs/Public_Health_Signal_Detection_Technical_White_Paper.docx`  
-  Research-grade technical white paper describing the architecture, methodology, public health context, evaluation framework, operational readiness, and future roadmap.
+  Research-grade technical white paper describing the architecture, methodology, public health context, evaluation framework, operational readiness, and future roadmap. This is the strongest technical artifact for explaining the seriousness and scalability of the project.
+
+- `docs/Public_Health_Signal_Detection_Technical_White_Paper.pdf`  
+  PDF version of the technical white paper for easier reading, sharing, and review.
 
 - `docs/modernizing_public_health_surveillance_with_ai_medium_article.txt`  
   Medium-style public-facing article on modernizing public health surveillance with AI.
@@ -235,6 +276,27 @@ Key documentation files:
 
 - `reports/public_health_use_cases.md`  
   Applied public health use cases supported by the prototype architecture.
+
+## Implementation Evidence
+
+This project provides concrete technical evidence of an applied public health data engineering and analytics initiative. The repository demonstrates:
+
+- Practical implementation capability, not only a conceptual plan.
+- Applied AI/ML engineering in a health data modernization context.
+- Work that can scale beyond one local or single-organization use case.
+- Alignment with recognized public health needs such as outbreak detection, emergency preparedness, data modernization, and surveillance analytics.
+
+Supporting materials in this repository include:
+
+- Working code
+- Reproducible data pipeline
+- Model outputs
+- Dashboard screenshots or demo
+- Technical white paper
+- Data dictionary
+- Model summary
+- Use-case documentation
+- Public-facing thought leadership article
 
 ## Limitations
 
