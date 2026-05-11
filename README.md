@@ -1,214 +1,303 @@
-# Public Health Signal Detection and Response Dashboard
+# Public Syndromic Surveillance Platform
 
-An applied public health informatics prototype for syndromic surveillance analytics, anomaly detection, forecasting, geospatial risk monitoring, synthetic HL7 simulation, and retrieval-augmented public health search.
+**Explainable Public Health Signal Intelligence Using Public Aggregate and Synthetic Data**
 
-This project demonstrates how public aggregate or synthetic emergency department surveillance data can be transformed into analyst-facing operational intelligence. The dashboard is designed as a public health analytics modernization prototype focused on public health data engineering, surveillance modernization, applied AI/ML analytics, and emergency preparedness technology.
+The Public Syndromic Surveillance Platform is an applied public health informatics prototype for reviewing unusual emergency department visit patterns, geographic risk signals, short-term surveillance trends, data quality, and responsible AI-assisted analyst workflows.
 
-The system is not an official public health, clinical, or government decision system.
+The platform demonstrates how public aggregate and synthetic surveillance-style data can be transformed into explainable signal intelligence through ETL, feature engineering, anomaly detection, risk scoring, geospatial review, forecasting, retrieval-augmented question answering, and research-style documentation.
 
-## Public Health Engineering Focus
+This is an independent research prototype. It is not an official public health system, clinical system, government system, or operational response tool.
 
-This repository supports a broader technical focus on scalable public health analytics infrastructure for earlier detection, monitoring, and interpretation of emerging health signals. The work demonstrates applied capability across healthcare data engineering, syndromic surveillance, anomaly detection, forecasting, geospatial analytics, retrieval-augmented search, synthetic data simulation, and analyst-facing dashboard design.
+## Platform Purpose
 
-The project is framed around the following applied engineering objective:
+Public health teams often need to recognize unusual illness or injury patterns before confirmed diagnosis data are complete. Emergency department visit trends and syndrome categories can provide earlier awareness of respiratory illness, overdose-related harms, heat illness, gastrointestinal illness, injury patterns, mental health concerns, and other emerging conditions.
 
-> To design and implement modern public health surveillance analytics systems that improve the ability to detect unusual emergency department visit patterns, monitor geographic risk, validate data quality, and support timely public health preparedness and response planning.
+This application demonstrates a modern surveillance analytics workflow that helps reviewers answer:
 
-## Public Health Impact and Implementation Evidence
+- Which state, region, or syndrome should be reviewed first?
+- Is current activity unusual relative to recent baseline behavior?
+- Which syndrome is driving geographic risk?
+- How are anomaly and risk scores generated?
+- Is the data complete enough to support interpretation?
+- What does the forecast suggest, and how reliable is it?
+- What evidence exists in the repository to support the implementation?
 
-| Area | Project Evidence |
+## Current Application Tabs
+
+The Streamlit application is organized into reviewer-friendly sections:
+
+| Tab | Purpose |
 |---|---|
-| Public health relevance | Addresses surveillance, emergency preparedness, outbreak monitoring, respiratory illness detection, data quality analytics, and faster review of potential health-threat signals. |
-| Broader infrastructure value | Aligns with public health data modernization priorities, syndromic surveillance concepts, cross-jurisdiction situational awareness, emergency preparedness, and scalable health intelligence infrastructure. |
-| Engineering capability | Demonstrates hands-on implementation across data ingestion, ETL, feature engineering, anomaly detection, forecasting, risk scoring, geospatial visualization, NLP/RAG design, synthetic HL7 simulation, documentation, and deployment. |
-| Practical Implementation | Provides a working Streamlit prototype with measurable outputs, model-generated alerts, data quality metrics, documentation, tests, and reproducible project structure. |
-| Future Scalability | Can be extended with real-time feeds, HL7/FHIR ingestion, API alerts, jurisdiction-level dashboards, ontology-aware RAG, privacy-preserving synthetic data, and governed cloud deployment. |
+| Overview | Explains the platform, review path, responsible-use boundary, and key metrics. |
+| Signal Review | Shows priority state/syndrome signals, observed values, baselines, deviations, anomaly scores, risk scores, risk levels, and review notes. |
+| Analytics Engine | Explains the model stack, feature outputs, anomaly logic, risk scoring, and model output interpretation. |
+| Query Assistant | RAG-based public health query assistant for plain-language questions about data, signals, charts, methods, and limitations. |
+| Policy Briefing | RAG-based briefing assistant for leadership-style summaries, review priorities, governance caveats, and planning context. |
+| Geography | Shows state-level risk rankings, primary risk drivers, geospatial prioritization, and map-based risk review. |
+| Forecasting | Shows observed trends, anomaly context, short-term forecasts, model metrics, and limitations. |
+| Data Quality | Reviews completeness, missingness, duplicates, coverage, and data boundaries. |
+| Methods | Documents ingestion, cleaning, features, anomaly detection, forecasting, risk scoring, NLP, RAG, and synthetic HL7 concepts. |
+| Technical Whitepaper | Research-paper style explanation of the problem, architecture, models, LLM/RAG design, evaluation, governance, limitations, and repository evidence. |
 
-## Project Purpose
+## Screenshots
 
-Public health surveillance teams need timely, explainable tools for identifying unusual illness patterns, monitoring geographic risk, validating data quality, and communicating emerging signals. This repository implements a modular analytics workflow that turns syndromic surveillance data into:
+Add website screenshots to `docs/screenshots/` using the filenames below. The README will display them automatically once the image files are present.
 
-- Rolling baseline comparisons
-- Statistical anomaly detection
-- Isolation Forest anomaly scoring
-- Short-term forecasting
-- Composite risk scoring
-- Geographic risk maps
-- Alert intelligence tables
-- Data quality indicators
-- RAG-based natural-language surveillance search
-- Synthetic HL7-style test message generation
+Recommended capture width: 1440px or wider for desktop screenshots.
 
-The current implementation focuses on respiratory syndrome categories derived from public CDC NSSP Emergency Department Visit Trajectories data.
+### Overview Page
+
+Shows the platform summary, public health problem framing, review path, metrics, and whitepaper reference.
+
+![Overview page screenshot](docs/screenshots/overview.png)
+
+
+![Overview page screenshot](docs/screenshots/overview2.png)
+
+![Overview page screenshot](docs/screenshots/overview3.png)
+
+### Signal Review
+
+Shows priority signal review with observed value, baseline, deviation, anomaly score, risk score, risk level, and review note.
+
+![Signal Review screenshot](docs/screenshots/signal-review.png)
+
+### Analytics Engine
+
+Shows the model workflow, explainable model outputs, rolling baseline, z-score, Isolation Forest, risk scoring, and forecasting context.
+
+![Analytics Engine screenshot](docs/screenshots/analytics-engine.png)
+
+### Public Health Query Assistant
+
+Shows the RAG-based assistant for plain-language questions about signals, charts, methods, data quality, and limitations.
+
+![Query Assistant screenshot](docs/screenshots/query-assistant.png)
+
+### Policy Briefing Assistant
+
+Shows the RAG-based policy briefing assistant for leadership-ready summaries, governance caveats, and review priorities.
+
+![Policy Briefing screenshot](docs/screenshots/policy-briefing.png)
+
+### Geographic Risk
+
+Shows the geospatial risk map, state-level rankings, primary syndrome risk driver, and column guide.
+
+![Geographic Risk screenshot](docs/screenshots/geograph.png)
+![Geographic Risk screenshot](docs/screenshots/geography2.png)
+
+
+
+### Forecasting
+
+Shows observed trends, anomaly markers, model-selected forecasts, and model metrics such as MAE, RMSE, sMAPE, and WMAPE.
+
+![Forecasting screenshot](docs/screenshots/forecasting.png)
+
+![Forecasting screenshot](docs/screenshots/forecasting2.png)
+
+![Forecasting screenshot](docs/screenshots/forecasting3.png)
+
+### Data Quality
+
+Shows data completeness, missingness, duplicate checks, transformed record counts, and coverage metrics.
+
+![Data Quality screenshot](docs/screenshots/data-quality.png)
+
+### Technical Whitepaper
+
+Shows the research-style explanation of the system architecture, model rationale, LLM/RAG design, evaluation, governance, limitations, and repository evidence.
+
+![Technical Whitepaper screenshot](docs/screenshots/technical-whitepaper.png)
 
 ## Current Dataset Snapshot
 
-The processed dataset is stored at `data/processed/cdc_nssp_ed_trajectories_processed.csv`.
+The processed dataset is stored at:
+
+```text
+data/processed/cdc_nssp_ed_trajectories_processed.csv
+```
+
+Current processed dataset:
 
 | Metric | Current Value |
 |---|---:|
-| Raw source rows | 50,000 |
-| Processed analytic records | 7,842 |
-| Date range | 2022-10-01 to 2024-01-06 |
+| Processed analytic records | 182,241 |
+| Date range | 2022-10-01 to 2026-04-30 |
 | States / regions | 51 |
-| Syndrome categories | 3 |
-| Anomaly-flagged records | 236 |
-| High-risk records | 182 |
+| Syndrome categories | 11 |
+| Anomaly-flagged records | 5,468 |
+| High-risk records | 2,396 |
 | Critical-risk records | 0 |
-| Duplicate records | 0 |
-| Data completeness | 98.16% |
+| Data completeness | 100.00% |
 
 Monitored syndrome categories:
 
 - COVID-like illness
 - Influenza-like illness
 - RSV-like illness
+- Gastrointestinal illness
+- Heat-related illness
+- Suspected opioid overdose
+- Mental health crisis
+- Suicide-related behavior
+- Firearm injury
+- Rash and fever syndrome
+- Neurological symptoms
 
-## Public Health Context
-
-Syndromic surveillance uses near real-time healthcare encounter data, such as emergency department visits and chief complaints, to identify unusual patterns before confirmed diagnoses are available. This capability supports early outbreak detection, respiratory illness monitoring, overdose surveillance concepts, environmental health monitoring, emergency preparedness, and cross-jurisdiction situational awareness.
-
-This context is important because the project is not limited to a narrow software demonstration. It addresses a broader public health infrastructure need: converting fragmented healthcare encounter data into timely, explainable, and actionable surveillance intelligence that can support preparedness and response.
-
-The project is conceptually aligned with public health surveillance modernization priorities reflected in:
-
-- CDC National Syndromic Surveillance Program
-- CDC ESSENCE workflows
-- CDC BioSense Platform concepts
-- HHS public health preparedness and data modernization priorities
-- WHO epidemic intelligence and public health surveillance concepts
-
-No government agency endorses or operates this prototype.
+The dataset combines public aggregate respiratory surveillance indicators with synthetic validation data for broader applied use-case testing. Synthetic data is used only for research, demonstration, and model stress testing.
 
 ## System Architecture
 
 ```text
-Public / Synthetic Surveillance Data
+Public Aggregate Data + Synthetic Validation Data
         |
         v
 Data Ingestion
         |
         v
-ETL and Quality Control
+Cleaning, Standardization, and Data Quality Checks
         |
         v
 Feature Engineering
         |
         v
-Anomaly Detection + Forecasting
+Anomaly Detection and Forecasting
         |
         v
-Risk Scoring + Geospatial Aggregation
+Risk Scoring and Geospatial Aggregation
         |
         v
-RAG/NLP Query Assistant
+RAG-Based Query and Briefing Assistants
         |
         v
-Streamlit Dashboard + Alert Intelligence
+Streamlit Analyst-Facing Application
 ```
 
 Core architecture layers:
 
 | Layer | Role |
 |---|---|
-| Data ingestion | Loads raw public/synthetic surveillance extracts and cached processed files. |
-| ETL and quality control | Standardizes dates, geography, syndrome fields, numeric values, missingness, and duplicates. |
+| Data ingestion | Loads public CDC aggregate data, cached raw files, and synthetic syndrome validation data. |
+| Cleaning and standardization | Standardizes dates, geography, syndrome fields, numeric values, missingness, and duplicate checks. |
 | Feature engineering | Computes lag features, rolling baselines, z-scores, percent change, and trend acceleration. |
-| Analytics engine | Runs z-score detection, Isolation Forest anomaly scoring, forecasting, and model output generation. |
-| Risk scoring | Converts severity, growth, anomaly flags, and persistence into a 0-100 risk score. |
-| Geospatial analytics | Aggregates state-level risk and displays risk maps and rankings. |
-| RAG/NLP assistant | Retrieves relevant project and surveillance context for grounded natural-language answers. |
-| Dashboard layer | Presents filters, KPIs, charts, maps, alert tables, data quality metrics, and methodology sections. |
-
-## Technical Contributions
-
-This project demonstrates several technical contributions that support public health analytics modernization:
-
-- End-to-end surveillance ETL from raw public data into an analytic state/date/syndrome table.
-- Interpretable anomaly detection using rolling baselines, z-scores, Isolation Forest, percent change, and signal persistence.
-- Composite risk scoring that translates model outputs into analyst-review priority levels.
-- Short-term forecasting workflow with ARIMA, Prophet option, Exponential Smoothing fallback, and rolling-average fallback.
-- Geospatial risk mapping for state-level situational awareness.
-- RAG-based public health search assistant grounded in local documentation and live surveillance summaries.
-- Synthetic HL7-style message generation for healthcare interoperability testing concepts.
-- Rule-based chief complaint classification as a transparent NLP baseline.
-- Data quality reporting for completeness, missingness, duplicates, timeliness, and geographic validity.
-- Technical documentation package including a white paper, model summary, data dictionary, use cases, and public-facing article.
+| Anomaly detection | Runs transparent z-score detection and unsupervised Isolation Forest anomaly detection. |
+| Risk scoring | Converts severity, growth, anomaly flags, and persistence into a 0-100 risk score and risk level. |
+| Geospatial analytics | Aggregates state-level risk and identifies primary syndrome risk drivers. |
+| Forecasting | Compares short-term statistical models and baseline models using holdout performance. |
+| RAG assistants | Retrieve local documentation and live surveillance summaries for grounded natural-language responses. |
+| Streamlit presentation | Presents metrics, charts, maps, tables, explanations, assistants, and the technical whitepaper. |
 
 ## Models and Analytics
 
 ### Signal Detection
 
-- Rolling baseline comparison
+The signal detection workflow uses multiple interpretable components:
+
+- Rolling baseline by state/syndrome
+- Rolling standard deviation
 - Z-score anomaly detection
+- Percent change from historical lag
+- Trend acceleration
 - Isolation Forest anomaly detection
-- Percent change from historical baseline
+- Recent anomaly persistence
 - Composite risk scoring
-- Analyst-readable alert explanations
+
+### Risk Scoring
+
+Risk score is a bounded 0-100 prioritization score that combines:
+
+- Statistical deviation severity
+- Positive recent growth
+- Isolation Forest anomaly flag
+- Recent anomaly persistence
+
+Risk levels:
+
+- Low
+- Moderate
+- High
+- Critical
+
+Risk scores support analyst prioritization only. They do not confirm outbreaks, diagnoses, or official response needs.
 
 ### Forecasting
 
 The forecasting module supports:
 
-- ARIMA
-- Prophet, when available and stable in the local environment
-- Exponential Smoothing fallback
-- Rolling-average last-resort fallback
+- Auto model selection using holdout performance
+- ARIMA candidate selection
+- Exponential Smoothing variants
+- Moving Average baseline
+- Naive baseline
+- Drift baseline
+- Prophet support when available
 
-Forecasting outputs are prototype analytics intended for trend review and early-warning demonstration. They are not operational predictions.
+The app reports:
 
-### RAG-Based Public Health Query Assistant
+- MAE
+- RMSE
+- sMAPE
+- WMAPE
+- selected model
+- selected ARIMA order or moving-average window when applicable
 
-The RAG assistant lets users ask plain-language questions about:
+Forecasting outputs are short-term analytic projections. They are directional planning aids, not authoritative predictions.
 
-- Current surveillance trends
-- High-risk states or regions
-- Anomaly scores and alert explanations
-- Data quality limitations
-- Syndrome definitions
-- Model behavior and methodology
-- Project documentation
+### RAG and LLM Assistant Design
 
-The assistant uses local project documentation and a live surveillance snapshot. If `OPENAI_API_KEY` is configured, it can generate grounded LLM responses from retrieved context. If no key is available, it falls back to retrieval-only responses.
+The application includes two retrieval-augmented assistant workflows:
 
-The assistant is not designed to provide medical advice, diagnosis, treatment guidance, or official public health direction.
+- Query Assistant
+- Policy Briefing Assistant
 
-### Synthetic HL7 and NLP Extensions
+The assistants retrieve from:
 
-The prototype includes:
+- local project documentation
+- model summaries
+- data dictionary
+- public health use-case notes
+- live surveillance snapshot generated from the currently loaded dataset
+- CDC/HHS-oriented guidance summary embedded in the app context
 
-- Synthetic HL7 ADT-style message generation for testing and demonstration
-- Rule-based chief complaint classification for transparent syndrome mapping
-- Future design space for privacy-preserving synthetic trend simulation and GAN-style synthetic data generation
+If an `OPENAI_API_KEY` is configured, the assistant uses the configured LLM model. The current default is:
 
-Synthetic data is used only for research, testing, and demonstration.
+```text
+gpt-4.1-mini
+```
 
-## Streamlit Dashboard
+If no API key is available, the assistant falls back to retrieval-only responses based on the top matching local context.
 
-The app is implemented in `app.py` and organized into top-level tabs:
+Assistant outputs are constrained to:
 
-- Overview
-- Signals
-- Analytics Engine
-- Geography
-- Forecasting
-- Data Quality
-- Methodology
-- Evidence
+- plain-language explanation
+- retrieved evidence
+- analyst review steps
+- caveats and responsible-use boundary
 
-Dashboard capabilities:
+The assistants are not designed to provide medical advice, diagnosis, treatment guidance, official directives, or autonomous response instructions.
 
-- Professional public health surveillance landing page
-- KPI metric cards
-- Public health surveillance context section
-- Heat-map style geospatial risk visualization
-- Alert intelligence table
-- Model output summaries
-- Forecast charts
-- Data quality scorecards
-- RAG-based public health query assistant
-- Synthetic HL7 and NLP demonstrations
-- References and disclaimer
+## Technical Whitepaper
+
+The app includes an in-app `Technical Whitepaper` tab. This is the main research-style reference for the prototype.
+
+It covers:
+
+- public health problem and motivation
+- system architecture
+- data boundary and dataset strategy
+- model selection and rationale
+- model and LLM inventory
+- RAG prompting and grounding design
+- applied surveillance use cases
+- evaluation approach
+- responsible AI and governance
+- limitations
+- repository evidence map
+- conclusion
+
+This tab is intended to help reviewers understand not only what the app does, but why the architecture, models, and responsible-use boundaries were chosen.
 
 ## How to Run
 
@@ -240,86 +329,107 @@ http://localhost:8501
 ## Repository Structure
 
 ```text
-app.py                         Streamlit dashboard
+app.py                         Streamlit application
 config.yaml                    Data and model configuration
-src/                           Data, modeling, forecasting, RAG, HL7, and visualization modules
-data/raw/                      Raw public/synthetic source files
+src/                           Ingestion, cleaning, features, models, RAG, geospatial, HL7, and visualization modules
+data/raw/                      Raw public and synthetic source files
 data/processed/                Processed analytic surveillance dataset
+docs/screenshots/              Website screenshots used by this README
+docs/whitepaper_assets/        Charts and figures generated for documentation
 reports/data_dictionary.md     Data fields and processing definitions
 reports/model_summary.md       Model and analytics documentation
 reports/public_health_use_cases.md
-docs/Public_Health_Signal_Detection_Technical_White_Paper.docx
-docs/Public_Health_Signal_Detection_Technical_White_Paper.pdf
-docs/modernizing_public_health_surveillance_with_ai_medium_article.txt
-docs/whitepaper_assets/        Charts generated for documentation
 tests/                         Unit tests
+```
+
+## Key Source Files
+
+| File | Purpose |
+|---|---|
+| `src/data_ingestion.py` | Loads public CDC data, cached raw files, and synthetic syndrome data. |
+| `src/data_cleaning.py` | Transforms raw surveillance-style extracts into standardized analytic records. |
+| `src/feature_engineering.py` | Creates lag, rolling baseline, z-score, percent change, and acceleration features. |
+| `src/anomaly_detection.py` | Implements z-score and Isolation Forest anomaly detection. |
+| `src/risk_scoring.py` | Converts model outputs into interpretable risk scores and levels. |
+| `src/forecasting.py` | Supports short-term forecasting, auto model selection, and fallback projections. |
+| `src/geospatial.py` | Prepares state-level data for map-based risk review and primary risk-driver identification. |
+| `src/rag_assistant.py` | Supports grounded question answering over app data and documentation. |
+| `src/synthetic_data.py` | Generates synthetic syndrome time-series data for validation coverage. |
+| `src/hl7_generator.py` | Provides synthetic HL7-style data generation concepts for testing. |
+| `app.py` | Implements the Streamlit user interface, tabs, metrics, charts, tables, assistants, and whitepaper. |
+
+## Testing
+
+Run the focused test suite:
+
+```bash
+pytest tests/test_synthetic_data.py tests/test_data_cleaning.py tests/test_forecasting.py tests/test_risk_scoring.py tests/test_extended_features.py
+```
+
+Recent verification:
+
+```text
+11 passed
 ```
 
 ## Documentation
 
 Key documentation files:
 
-- `docs/Public_Health_Signal_Detection_Technical_White_Paper.docx`  
-  Research-grade technical white paper describing the architecture, methodology, public health context, evaluation framework, operational readiness, and future roadmap. This is the strongest technical artifact for explaining the seriousness and scalability of the project.
-
-- `docs/Public_Health_Signal_Detection_Technical_White_Paper.pdf`  
-  PDF version of the technical white paper for easier reading, sharing, and review.
-
-- `docs/modernizing_public_health_surveillance_with_ai_medium_article.txt`  
-  Medium-style public-facing article on modernizing public health surveillance with AI.
-
-- `reports/model_summary.md`  
-  Technical summary of feature engineering, anomaly detection, forecasting, risk scoring, RAG, NLP, HL7, and geospatial methods.
-
-- `reports/data_dictionary.md`  
-  Raw and processed field dictionary for the CDC-derived surveillance dataset.
-
-- `reports/public_health_use_cases.md`  
-  Applied public health use cases supported by the prototype architecture.
+- `reports/model_summary.md`
+- `reports/data_dictionary.md`
+- `reports/public_health_use_cases.md`
+- `docs/Public_Health_Signal_Detection_Technical_White_Paper.docx`
+- `docs/Public_Health_Signal_Detection_Technical_White_Paper.pdf`
+- `docs/modernizing_public_health_surveillance_with_ai_medium_article.txt`
+- `docs/PROJECT_DOCUMENTATION_INDEX.md`
 
 ## Implementation Evidence
 
-This project provides concrete technical evidence of an applied public health data engineering and analytics initiative. The repository demonstrates:
+This repository demonstrates:
 
-- Practical implementation capability, not only a conceptual plan.
-- Applied AI/ML engineering in a health data modernization context.
-- Work that can scale beyond one local or single-organization use case.
-- Alignment with recognized public health needs such as outbreak detection, emergency preparedness, data modernization, and surveillance analytics.
+- end-to-end public health surveillance ETL
+- synthetic validation data generation
+- feature engineering for state/syndrome time series
+- interpretable anomaly detection
+- unsupervised anomaly detection
+- risk scoring and risk-level assignment
+- short-term forecasting and model comparison
+- geospatial prioritization
+- data quality review
+- RAG-based query and briefing assistants
+- in-app technical whitepaper
+- reproducible tests
+- professional Streamlit application design
 
-Supporting materials in this repository include:
+## Responsible-Use Boundary
 
-- Working code
-- Reproducible data pipeline
-- Model outputs
-- Dashboard screenshots or demo
-- Technical white paper
-- Data dictionary
-- Model summary
-- Use-case documentation
-- Public-facing thought leadership article
+This prototype supports research, demonstration, and technical evaluation only. It does not provide medical advice, clinical diagnosis, confirmed outbreak detection, official public health guidance, or operational response instructions.
+
+Outputs are intended to support human analyst review. Model thresholds, risk scores, forecasts, and assistant responses require validation, calibration, monitoring, and expert interpretation before any operational use.
 
 ## Limitations
 
-- The dataset is public aggregate or synthetic and historical, not live operational surveillance data.
-- The app is not affiliated with, endorsed by, or operated by HHS, CDC, WHO, NSSP, BioSense, ESSENCE, or any government agency.
-- Model thresholds are prototype settings and require validation before operational use.
-- Precision and recall require adjudicated ground truth labels and are not asserted from the unlabeled public/synthetic dataset.
-- Forecasts are short-term analytic demonstrations, not official predictions.
-- RAG responses depend on retrieved local context and should be reviewed by a human analyst.
-- The system must not be used for clinical decision-making, diagnosis, treatment, or operational public health response.
+- The dataset uses public aggregate and synthetic data, not live operational surveillance feeds.
+- The application does not use patient-level records or protected health information.
+- Synthetic data improves testing breadth but does not prove real-world model performance.
+- Anomaly detection may flag noise, reporting artifacts, seasonal changes, or synthetic events.
+- Forecasting quality varies by state, syndrome, history length, and volatility.
+- RAG responses depend on retrieved project context and should be reviewed by humans.
+- The system is not affiliated with, endorsed by, or operated by HHS, CDC, WHO, NSSP, BioSense, ESSENCE, or any government agency.
 
 ## Future Roadmap
 
-- Real-time or scheduled surveillance data refresh
-- HL7/FHIR ingestion patterns
+- Scheduled public data refresh
 - County-level or jurisdiction-level risk views
+- HL7/FHIR ingestion patterns
 - API-based alert publishing
 - Analyst feedback and alert disposition workflow
 - Model monitoring and drift detection
-- More advanced chief complaint NLP
+- Additional public health syndrome categories
 - Ontology-aware retrieval using public health and clinical vocabularies
 - Privacy-preserving synthetic data simulation
-- Cloud-native deployment with authentication, audit logging, and role-based access
+- Authenticated deployment with audit logging and role-based access
 
 ## Official References
 
@@ -328,8 +438,9 @@ Supporting materials in this repository include:
 - CDC ESSENCE: https://www.cdc.gov/nssp/php/onboarding-toolkits/essence.html
 - CDC Data Modernization: https://www.cdc.gov/data-modernization/php/about/index.html
 - HHS Emergency Preparedness and Response: https://www.hhs.gov/programs/emergency-preparedness/index.html
+- WHO Public Health Surveillance: https://www.who.int/westernpacific/menu/mega-menu/emergencies/surveillance
 - WHO Epidemic Intelligence from Open Sources: https://www.who.int/initiatives/eios
 
 ## Disclaimer
 
-This prototype is an independent public health analytics research project using public aggregate or synthetic data. It is not an official system of HHS, CDC, WHO, NSSP, BioSense, ESSENCE, or any government agency. It is not intended for clinical decision-making, diagnosis, treatment, or operational public health response.
+This application describes an independent public health analytics research prototype using public aggregate or synthetic data. It is not an official system of HHS, CDC, WHO, NSSP, BioSense, ESSENCE, or any government agency. It is not intended for clinical decision-making, diagnosis, treatment, official public health guidance, or operational public health response.
