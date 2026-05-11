@@ -122,21 +122,30 @@ def answer_from_documents(query: str, paths: list[Path], top_k: int = 3) -> tupl
 def _retrieval_only_answer(query: str, results: pd.DataFrame) -> str:
     # Format retrieved context into a readable fallback answer when LLM is unavailable.
     if results.empty or results["score"].max() == 0:
-        return "No strong local surveillance or documentation match was found for that question."
+        return (
+            "I could not find a strong match in the local surveillance data or project documentation.\n\n"
+            "Try asking about current signals, highest-risk regions, syndrome categories, data quality, forecasting, "
+            "risk scoring, or how the platform should be used for analyst review."
+        )
 
     lines = [
-        "LLM generation is not available, so this answer is based on retrieved local context.",
+        "Here is a plain-language answer based on retrieved local context.",
         "",
         f"Question: {query}",
         "",
-        "Most relevant context:",
+        "What the retrieved context says:",
     ]
-    for _, row in results.iterrows():
-        lines.append(f"- {row['source']} section {row['chunk_id']} (score {row['score']:.2f}): {row['text'][:700]}")
+    for _, row in results.head(3).iterrows():
+        snippet = " ".join(str(row["text"]).split())[:650]
+        lines.append(f"- {snippet}")
+    lines.extend([
+        "",
+        "How to interpret this: use the answer as context for analyst review. It is not a diagnosis, a confirmed event, official public health guidance, or an operational response instruction.",
+    ])
     return "\n".join(lines)
 
 
-def _generate_llm_answer(query: str, results: pd.DataFrame, model: str) -> str:
+def _generate_llm_answer(query: str, results: pd.DataFrame, model: str, response_mode: str = "query") -> str:
     #     # 1. Require an OpenAI API key and client library.
     # 2. Build a prompt from retrieved local context only.
     # 3. Ask the LLM to answer with operational caveats and no medical directives.
@@ -153,16 +162,29 @@ def _generate_llm_answer(query: str, results: pd.DataFrame, model: str) -> str:
         f"[{idx + 1}] Source: {row['source']} section {row['chunk_id']}\n{row['text']}"
         for idx, (_, row) in enumerate(results.iterrows())
     )
+    mode_instruction = (
+        "For the Public Health Query Assistant, focus on explaining surveillance data, charts, methods, syndrome categories, and data quality in plain language."
+        if response_mode == "query"
+        else "For the Policy Briefing Assistant, focus on leadership-ready situational awareness, review priorities, planning considerations, governance needs, and responsible-use boundaries."
+    )
     instructions = (
-        "You are a public health surveillance analyst assistant. "
-        "Answer only from the retrieved context. Be concise, operational, and careful. "
-        "When the context is insufficient, say what is missing. "
-        "Do not provide medical diagnosis or official public health directives."
+        "You are an applied public health informatics assistant for a syndromic surveillance analytics prototype. "
+        "Use only the retrieved context and live surveillance snapshot. "
+        "Write for a mixed audience of analysts, program leaders, and non-technical reviewers. "
+        "Use clear headings, short paragraphs, and concrete bullets. Avoid jargon unless you explain it. "
+        f"{mode_instruction} "
+        "Frame outputs as support for analyst review and planning. Do not claim that a signal confirms an outbreak, diagnosis, disease event, or official response need. "
+        "When the context is insufficient, say what is missing and what data would be needed. "
+        "Do not provide medical advice, diagnosis, treatment guidance, official public health directives, or autonomous response instructions."
     )
     prompt = (
         f"Question:\n{query}\n\n"
         f"Retrieved context:\n{context}\n\n"
-        "Answer with: direct answer, supporting evidence, and any operational caveats."
+        "Answer using this structure:\n"
+        "1. Short answer\n"
+        "2. What the platform data or documentation supports\n"
+        "3. What an analyst or reviewer should check next\n"
+        "4. Caveats and responsible-use boundary"
     )
 
     client = OpenAI(api_key=api_key)
@@ -178,9 +200,11 @@ def answer_rag_question(
     query: str,
     paths: list[Path],
     surveillance_df: pd.DataFrame | None = None,
+    guidance_context: str | None = None,
     top_k: int = 5,
     use_llm: bool = True,
     model: str | None = None,
+    response_mode: str = "query",
 ) -> tuple[str, pd.DataFrame, dict]:
     #     # 1. Add live surveillance snapshot context when dashboard data is available.
     # 2. Retrieve the most relevant local context for the user query.
@@ -193,6 +217,12 @@ def answer_rag_question(
             "chunk_id": 1,
             "text": build_surveillance_snapshot(surveillance_df),
         })
+    if guidance_context:
+        extra_contexts.append({
+            "source": "cdc_hhs_guidance_summary",
+            "chunk_id": 1,
+            "text": guidance_context,
+        })
 
     results = search_documents(query, paths, top_k=top_k, extra_contexts=extra_contexts)
     selected_model = model or os.getenv("OPENAI_MODEL", "gpt-4.1-mini")
@@ -204,7 +234,7 @@ def answer_rag_question(
 
     if use_llm and not results.empty and results["score"].max() > 0:
         try:
-            answer = _generate_llm_answer(query, results, selected_model)
+            answer = _generate_llm_answer(query, results, selected_model, response_mode=response_mode)
             metadata["mode"] = "llm_rag"
             metadata["model"] = selected_model
             return answer, results, metadata

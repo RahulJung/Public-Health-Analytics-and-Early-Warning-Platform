@@ -2,6 +2,7 @@ from pathlib import Path
 import pandas as pd
 import requests
 from .config import ROOT_DIR, load_config
+from .synthetic_data import generate_synthetic_syndromic_data, save_synthetic_syndromic_data
 
 
 def fetch_cdc_data(api_url: str, max_records: int = 50000, app_token: str = "") -> pd.DataFrame:
@@ -41,23 +42,37 @@ def load_or_fetch_data(force_refresh: bool = False) -> pd.DataFrame:
     raw_path.parent.mkdir(parents=True, exist_ok=True)
 
     if raw_path.exists() and not force_refresh:
-        return pd.read_csv(raw_path)
+        df = pd.read_csv(raw_path, low_memory=False)
+    else:
+        try:
+            df = fetch_cdc_data(
+                cfg["data"]["cdc_api_url"],
+                max_records=int(cfg["data"].get("max_records", 50000)),
+                app_token=cfg["data"].get("app_token", ""),
+            )
+            if df.empty:
+                raise ValueError("CDC API returned no records.")
+            df.to_csv(raw_path, index=False)
+        except Exception:
+            sample_path = ROOT_DIR / "data" / "raw" / "sample_syndromic_data.csv"
+            if sample_path.exists():
+                df = pd.read_csv(sample_path)
+            else:
+                raise
 
-    try:
-        df = fetch_cdc_data(
-            cfg["data"]["cdc_api_url"],
-            max_records=int(cfg["data"].get("max_records", 50000)),
-            app_token=cfg["data"].get("app_token", ""),
-        )
-        if df.empty:
-            raise ValueError("CDC API returned no records.")
-        df.to_csv(raw_path, index=False)
+    if not cfg["data"].get("include_synthetic", False):
         return df
-    except Exception:
-        sample_path = ROOT_DIR / "data" / "raw" / "sample_syndromic_data.csv"
-        if sample_path.exists():
-            return pd.read_csv(sample_path)
-        raise
+
+    synthetic_path = ROOT_DIR / cfg["data"].get("synthetic_path", "data/raw/synthetic_syndromic_surveillance.csv")
+    if synthetic_path.exists() and not force_refresh:
+        synthetic = pd.read_csv(synthetic_path, low_memory=False)
+    else:
+        synthetic = generate_synthetic_syndromic_data()
+        save_synthetic_syndromic_data(synthetic, synthetic_path)
+
+    df = df.copy()
+    df["source"] = "cdc_public"
+    return pd.concat([df, synthetic], ignore_index=True, sort=False)
 
 
 if __name__ == "__main__":

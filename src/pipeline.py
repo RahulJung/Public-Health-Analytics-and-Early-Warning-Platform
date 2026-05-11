@@ -29,6 +29,6 @@ def run_pipeline(force_refresh: bool = False):
 
 if __name__ == "__main__":
     # Execute the full pipeline from the command line for a refresh smoke test.
-    output = run_pipeline(force_refresh=True)
+    output = run_pipeline(force_refresh=False)
     print(output.head())
     print(output.shape)

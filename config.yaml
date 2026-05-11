@@ -6,6 +6,8 @@ data:
   cdc_api_url: "https://data.cdc.gov/resource/rdmq-nq56.json"
   app_token: ""
   raw_path: "data/raw/cdc_nssp_ed_trajectories_raw.csv"
+  synthetic_path: "data/raw/synthetic_syndromic_surveillance.csv"
+  include_synthetic: true
   processed_path: "data/processed/cdc_nssp_ed_trajectories_processed.csv"
   max_records: 50000
 
@@ -13,7 +15,7 @@ model:
   rolling_window: 7
   zscore_threshold: 2.5
   contamination: 0.03
-  forecast_model: "ARIMA"
+  forecast_model: "Auto (Best Backtest)"
   forecast_periods: 14
   rag_model: "gpt-4.1-mini"
 

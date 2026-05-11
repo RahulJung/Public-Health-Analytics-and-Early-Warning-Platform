@@ -64,6 +64,18 @@ def latest_geospatial_risk(df: pd.DataFrame) -> pd.DataFrame:
     # 2. Aggregate to one state-level risk summary.
     # 3. Attach centroid coordinates so Plotly can render a U.S. map.
     latest = df.sort_values("date").groupby(["state", "syndrome"], as_index=False).tail(1)
+    if "visit_percentage" not in latest.columns:
+        latest["visit_percentage"] = None
+    driver_idx = latest.groupby("state")["risk_score"].idxmax()
+    drivers = latest.loc[
+        driver_idx,
+        ["state", "syndrome", "risk_score", "risk_level", "visit_percentage"],
+    ].rename(columns={
+        "syndrome": "primary_syndrome",
+        "risk_score": "primary_risk_score",
+        "risk_level": "primary_risk_level",
+        "visit_percentage": "primary_observed_value",
+    })
     summary = (
         latest.groupby("state", as_index=False)
         .agg(
@@ -73,6 +85,7 @@ def latest_geospatial_risk(df: pd.DataFrame) -> pd.DataFrame:
             anomaly_count=("any_anomaly", "sum"),
         )
     )
+    summary = summary.merge(drivers, on="state", how="left")
     summary["lat"] = summary["state"].map(lambda state: STATE_CENTROIDS.get(state, (None, None))[0])
     summary["lon"] = summary["state"].map(lambda state: STATE_CENTROIDS.get(state, (None, None))[1])
     return summary.dropna(subset=["lat", "lon"])
@@ -91,6 +104,8 @@ def plot_geospatial_risk(df: pd.DataFrame):
         hover_name="state",
         hover_data={
             "latest_date": True,
+            "primary_syndrome": True,
+            "primary_risk_level": True,
             "max_risk_score": ":.1f",
             "high_risk_count": True,
             "anomaly_count": True,

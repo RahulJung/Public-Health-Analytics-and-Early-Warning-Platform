@@ -36,12 +36,12 @@ def _reshape_cdc_ed_trajectories(df: pd.DataFrame) -> pd.DataFrame | None:
         id_vars=["week_end", "geography"],
         value_vars=available_values,
         var_name="syndrome",
-        value_name="visit_percentage",
+        value_name="_cdc_visit_percentage",
     )
     long_df["date"] = pd.to_datetime(long_df["week_end"], errors="coerce")
     long_df["state"] = long_df["geography"].astype(str).str.strip()
     long_df["syndrome"] = long_df["syndrome"].map(value_columns)
-    long_df["visit_percentage"] = pd.to_numeric(long_df["visit_percentage"], errors="coerce")
+    long_df["visit_percentage"] = pd.to_numeric(long_df["_cdc_visit_percentage"], errors="coerce")
     long_df = long_df.dropna(subset=["date", "state", "syndrome", "visit_percentage"])
 
     return (
@@ -63,7 +63,12 @@ def clean_syndromic_data(df: pd.DataFrame) -> pd.DataFrame:
     df.columns = [_normalize_column(col) for col in df.columns]
     cdc_long = _reshape_cdc_ed_trajectories(df)
     if cdc_long is not None:
-        df = cdc_long
+        long_columns = ["date", "state", "syndrome", "visit_percentage"]
+        if all(col in df.columns for col in long_columns):
+            long_df = df[long_columns].dropna(subset=long_columns)
+            df = pd.concat([cdc_long, long_df], ignore_index=True, sort=False)
+        else:
+            df = cdc_long
     else:
         date_col = _find_column(df.columns, ["week", "date", "time_period", "reporting_period", "mmwr_week"])
         geo_col = _find_column(df.columns, ["state", "jurisdiction", "geography", "region", "location"])
