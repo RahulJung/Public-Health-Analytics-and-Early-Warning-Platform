@@ -66,7 +66,13 @@ Shows priority signal review with observed value, baseline, deviation, anomaly s
 
 Shows the model workflow, explainable model outputs, rolling baseline, z-score, Isolation Forest, risk scoring, and forecasting context.
 
-![Analytics Engine screenshot](docs/screenshots/analytics-engine.png)
+![Analytics Engine screenshot](docs/screenshots/analytics.png)
+
+![Analytics Engine screenshot](docs/screenshots/analytics1.png)
+
+![Analytics Engine screenshot](docs/screenshots/analytics2.png)
+
+![Analytics Engine screenshot](docs/screenshots/analytics3.png)
 
 ### Public Health Query Assistant
 
@@ -103,13 +109,11 @@ Shows observed trends, anomaly markers, model-selected forecasts, and model metr
 
 Shows data completeness, missingness, duplicate checks, transformed record counts, and coverage metrics.
 
-![Data Quality screenshot](docs/screenshots/data-quality.png)
 
 ### Technical Whitepaper
 
 Shows the research-style explanation of the system architecture, model rationale, LLM/RAG design, evaluation, governance, limitations, and repository evidence.
 
-![Technical Whitepaper screenshot](docs/screenshots/technical-whitepaper.png)
 
 ## Current Dataset Snapshot
 
