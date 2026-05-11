@@ -6,9 +6,8 @@ This folder contains project-level documentation for the Public Health Signal De
 
 | Document | Purpose |
 |---|---|
-| `Public_Health_Signal_Detection_Technical_White_Paper.docx` | Research-grade technical white paper covering public health context, architecture, AI/ML methodology, forecasting, RAG/NLP design, synthetic HL7 concepts, operational readiness, limitations, and roadmap. |
+| `Public_Health_Analytics_Modernization_White_Paper.pdf` | Research-grade technical white paper covering public health context, architecture, AI/ML methodology, forecasting, RAG/NLP design, synthetic HL7 concepts, operational readiness, limitations, and roadmap. |
 | `modernizing_public_health_surveillance_with_ai_medium_article.txt` | Medium-style public-facing article explaining how AI can support public health surveillance modernization. |
-| `NIW_PROJECT_SUMMARY.md` | Project summary retained for continuity with earlier documentation, now written as a public health surveillance analytics project summary. |
 
 ## Supporting Reports
 
@@ -33,13 +32,13 @@ These include risk distribution, anomaly-by-syndrome, temporal forecast, state r
 | Metric | Current Value |
 |---|---:|
 | Raw source rows | 50,000 |
-| Processed analytic records | 7,842 |
-| Date range | 2022-10-01 to 2024-01-06 |
+| Processed analytic records | 182,241 |
+| Date range | 2022-10-01 to 2026-04-30 |
 | States / regions | 51 |
-| Syndrome categories | 3 |
-| Anomaly-flagged records | 236 |
-| High-risk records | 182 |
-| Data completeness | 98.16% |
+| Syndrome categories | 11 |
+| Anomaly-flagged records | 5,468 |
+| High-risk records | 2,396 |
+| Data completeness | 99.58% |
 
 ## Disclaimer
 

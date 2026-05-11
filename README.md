@@ -383,8 +383,7 @@ Key documentation files:
 - `reports/model_summary.md`
 - `reports/data_dictionary.md`
 - `reports/public_health_use_cases.md`
-- `docs/Public_Health_Signal_Detection_Technical_White_Paper.docx`
-- `docs/Public_Health_Signal_Detection_Technical_White_Paper.pdf`
+- `docs/Public_Health_Analytics_Modernization_White_Paper.pdf`
 - `docs/modernizing_public_health_surveillance_with_ai_medium_article.txt`
 - `docs/PROJECT_DOCUMENTATION_INDEX.md`
 
