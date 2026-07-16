@@ -2,11 +2,11 @@
 
 **Explainable Public Health Signal Intelligence Using Public Aggregate and Synthetic Data**
 
-The Public Syndromic Surveillance Platform is an applied public health informatics prototype for reviewing unusual emergency department visit patterns, geographic risk signals, short-term surveillance trends, data quality, and responsible AI-assisted analyst workflows.
+The Public Syndromic Surveillance Platform is an applied public health informatics platform for reviewing unusual emergency department visit patterns, geographic risk signals, short-term surveillance trends, data quality, and responsible AI-assisted analyst workflows.
 
 The platform demonstrates how public aggregate and synthetic surveillance-style data can be transformed into explainable signal intelligence through ETL, feature engineering, anomaly detection, risk scoring, geospatial review, forecasting, retrieval-augmented question answering, and research-style documentation.
 
-This is an independent research prototype. It is not an official public health system, clinical system, government system, or operational response tool.
+This is an independent research platform. It is not an official public health system, clinical system, government system, or operational response tool.
 
 ## Platform Purpose
 
@@ -284,7 +284,7 @@ The assistants are not designed to provide medical advice, diagnosis, treatment 
 
 ## Technical Whitepaper
 
-The app includes an in-app `Technical Whitepaper` tab. This is the main research-style reference for the prototype.
+The app includes an in-app `Technical Whitepaper` tab. This is the main research-style reference for the platform.
 
 It covers:
 
@@ -407,7 +407,7 @@ This repository demonstrates:
 
 ## Responsible-Use Boundary
 
-This prototype supports research, demonstration, and technical evaluation only. It does not provide medical advice, clinical diagnosis, confirmed outbreak detection, official public health guidance, or operational response instructions.
+This platform supports research, demonstration, and technical evaluation only. It does not provide medical advice, clinical diagnosis, confirmed outbreak detection, official public health guidance, or operational response instructions.
 
 Outputs are intended to support human analyst review. Model thresholds, risk scores, forecasts, and assistant responses require validation, calibration, monitoring, and expert interpretation before any operational use.
 
@@ -446,4 +446,4 @@ Outputs are intended to support human analyst review. Model thresholds, risk sco
 
 ## Disclaimer
 
-This application describes an independent public health analytics research prototype using public aggregate or synthetic data. It is not an official system of HHS, CDC, WHO, NSSP, BioSense, ESSENCE, or any government agency. It is not intended for clinical decision-making, diagnosis, treatment, official public health guidance, or operational public health response.
+This application describes an independent public health analytics research platform using public aggregate or synthetic data. It is not an official system of HHS, CDC, WHO, NSSP, BioSense, ESSENCE, or any government agency. It is not intended for clinical decision-making, diagnosis, treatment, official public health guidance, or operational public health response.
