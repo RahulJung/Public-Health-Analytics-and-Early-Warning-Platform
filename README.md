@@ -437,13 +437,8 @@ Outputs are intended to support human analyst review. Model thresholds, risk sco
 ## Official References
 
 - CDC National Syndromic Surveillance Program: https://www.cdc.gov/nssp/
-- CDC BioSense Platform: https://www.cdc.gov/nssp/php/about/about-nssp-and-the-biosense-platform.html
-- CDC ESSENCE: https://www.cdc.gov/nssp/php/onboarding-toolkits/essence.html
-- CDC Data Modernization: https://www.cdc.gov/data-modernization/php/about/index.html
 - HHS Emergency Preparedness and Response: https://www.hhs.gov/programs/emergency-preparedness/index.html
 - WHO Public Health Surveillance: https://www.who.int/westernpacific/menu/mega-menu/emergencies/surveillance
 - WHO Epidemic Intelligence from Open Sources: https://www.who.int/initiatives/eios
 
-## Disclaimer
 
-This application describes an independent public health analytics research platform using public aggregate or synthetic data. It is not an official system of HHS, CDC, WHO, NSSP, BioSense, ESSENCE, or any government agency. It is not intended for clinical decision-making, diagnosis, treatment, official public health guidance, or operational public health response.
